@@ -1,6 +1,9 @@
 mw = require '../middleware'
 
 module.exports.setup = (app) ->
+
+  app.post('/auth/login-facebook', mw.auth.loginByFacebook)
+  app.post('/auth/login-gplus', mw.auth.loginByGPlus)
   app.post('/auth/spy', mw.auth.spy)
   app.post('/auth/stop-spying', mw.auth.stopSpying)
   
