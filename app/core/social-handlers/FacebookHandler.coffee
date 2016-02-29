@@ -18,6 +18,12 @@ module.exports = FacebookHandler = class FacebookHandler extends CocoClass
 
   loggedIn: false
 
+  fakeFacebookLogin: ->
+    @onFacebookLoggedIn({
+      response:
+        authResponse: { accessToken: '1243' }
+    })
+
   onFacebookLoggedIn: (e) ->
     # user is logged in also when the page first loads, so check to see
     # if we really need to do the lookup

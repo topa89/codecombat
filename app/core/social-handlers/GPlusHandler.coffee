@@ -79,6 +79,11 @@ module.exports = GPlusHandler = class GPlusHandler extends CocoClass
       'client_id' : clientID
       'scope' : scope
     gapi.auth.authorize params, @onGPlusLogin
+    
+  fakeGPlusLogin: ->
+    @onGPlusLogin({
+      access_token: '1234'
+    })
 
   onGPlusLogin: (e) ->
     return unless e.access_token
