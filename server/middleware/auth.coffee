@@ -38,7 +38,7 @@ module.exports =
   loginByGPlus: wrap (req, res) ->
     gpID = req.body.gplusID
     gpAT = req.body.gplusAccessToken
-    throw new errors.UnprocessableEntity('gplusID and gplusAccessToken required.') #unless gpID and gpAT
+    throw new errors.UnprocessableEntity('gplusID and gplusAccessToken required.') unless gpID and gpAT
 
     url = "https://www.googleapis.com/oauth2/v2/userinfo?access_token=#{gpAT}"
     [googleRes, body] = yield request.getAsync(url, {json: true})
@@ -53,7 +53,7 @@ module.exports =
   loginByFacebook: wrap (req, res) ->
     fbID = req.body.facebookID
     fbAT = req.body.facebookAccessToken
-    throw new errors.UnprocessableEntity('facebookID and facebookAccessToken required.')# unless fbID and fbAT
+    throw new errors.UnprocessableEntity('facebookID and facebookAccessToken required.') unless fbID and fbAT
 
     url = "https://graph.facebook.com/me?access_token=#{fbAT}"
     [facebookRes, body] = yield request.getAsync(url, {json: true})
