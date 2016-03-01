@@ -239,7 +239,7 @@ describe 'POST /auth/login-facebook', ->
     done()
 
 
-fdescribe 'POST /auth/login-gplus', ->
+describe 'POST /auth/login-gplus', ->
   beforeEach utils.wrap (done) ->
     yield utils.clearModels([User])
     done()
