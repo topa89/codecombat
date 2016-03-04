@@ -109,7 +109,7 @@ exports.config =
         'javascripts/box2d.js': regJoin('^vendor/scripts/Box2dWeb-2.1.a.3')
         'javascripts/lodash.js': regJoin('^bower_components/lodash/dist/lodash.js')
         'javascripts/aether.js': regJoin('^bower_components/aether/build/aether.js')
-        'javascripts/esper.js': regJoin('^bower_components/esper.js/esper.js')
+        'javascripts/esper.js': 'bower_components/esper.js/esper.js'
         'javascripts/app/vendor/aether-clojure.js': 'bower_components/aether/build/clojure.js'
         'javascripts/app/vendor/aether-coffeescript.js': 'bower_components/aether/build/coffeescript.js'
         'javascripts/app/vendor/aether-io.js': 'bower_components/aether/build/io.js'
@@ -159,7 +159,7 @@ exports.config =
           'bower_components/tv4/tv4.js'
           # Aether before box2d for some strange Object.defineProperty thing
           'bower_components/aether/build/aether.js'
-          'bower_components/esper/esper.js'
+          'bower_components/esper.js/esper.js'
           'bower_components/fastclick/lib/fastclick.js'
           'bower_components/d3/d3.min.js'
           'vendor/scripts/async.js'
