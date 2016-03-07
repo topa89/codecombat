@@ -135,11 +135,12 @@ module.exports = class User extends CocoModel
     @announcesActionAudioGroup
 
   getHomepageGroup: ->
-    return 'home-with-note' unless _.string.startsWith(me.get('preferredLanguage', true) or 'en-US', 'en')
+    # Only testing on en-US so localization issues are not a factor
+    return 'new-home-student' unless _.string.startsWith(me.get('preferredLanguage', true) or 'en-US', 'en')
     return @homepageGroup if @homepageGroup
     group = me.get('testGroupNumber') % 4
     @homepageGroup = switch group
-      when 0, 1 then 'home-with-note'
+      when 0, 1 then 'new-home-characters'
       when 2, 3 then 'new-home-student'
     application.tracker.identify newHomepageGroup: @homepageGroup unless me.isAdmin()
     return @homepageGroup
@@ -179,6 +180,19 @@ module.exports = class User extends CocoModel
 
   isOnPremiumServer: ->
     me.get('country') in ['china', 'brazil']
+    
+  spy: (user, options={}) ->
+    user = user.id or user # User instance, user ID, email or username
+    options.url = '/auth/spy'
+    options.type = 'POST'
+    options.data ?= {}
+    options.data.user = user
+    @fetch(options)
+    
+  stopSpying: (options={}) ->
+    options.url = '/auth/stop-spying'
+    options.type = 'POST'
+    @fetch(options)
 
   fetchGPlusUser: (gplusID, gplusAccessToken, options={}) ->
     options.data ?= {}
